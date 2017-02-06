@@ -1,0 +1,9 @@
+# required packages
+# to install requierments: pip install -r requirements.txt
+
+jupyter
+numpy
+matplotlib
+seaborn
+scikit-learn
+pandas
