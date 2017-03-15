@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html>
+<header>
+    <div class="nav">
+      <ul>
+        <li class="home"><a href="http://michael-harmon.com">Home</a></li>
+        <li class="LinkedIn"><a href="https://linkedin.com/in/michaeldavidharmon">LinkedIn</a></li>
+        <li class="GitHub"><a href="https://github.com/mdh266/">GitHub</a></li>
+      </ul>
+    </div>
+  </header>
 <head><meta charset="utf-8" />
 <title>Cancer_Classication</title>
 
@@ -11751,7 +11760,19 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Classification-Models-For-Cancer-Detection">Classification Models For Cancer Detection<a class="anchor-link" href="#Classification-Models-For-Cancer-Detection">&#182;</a></h1><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>The purpose of this blog post/notebook is to practice using classification models for cancer detection.  We will be working with breast tissue data provided by the University of California Irvine (UCI) Machine learning course which can be found <a href="https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/breast-cancer-wisconsin.data"> here.</a>  The dataset contains a sampling of 699 patient cells for which we have the following features:</p>
+<h1 id="Classification-Models-For-Cancer-Detection">Classification Models For Cancer Detection<a class="anchor-link" href="#Classification-Models-For-Cancer-Detection">&#182;</a></h1><hr>
+<h2 id="Contents">Contents<a class="anchor-link" href="#Contents">&#182;</a></h2><ul>
+<li><a href="#Introduction">Introduction</a></li>
+<li><a href="#Classes">Classes</a></li>
+<li><a href="#Cleaning">Data Cleaning</a></li>
+<li><a href="#Visualization">Visualizing The Data</a></li>
+<li><a href="#Modeling">Modeling</a></li>
+<li><a href="#Conclusion">Conclusion</a></li>
+</ul>
+<p>The source code for this project can be found <a href="https://github.com/mdh266/Cancer_Detection">here</a></p>
+<hr>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><hr>
+<p>The purpose of this blog post/notebook is to practice using classification models for cancer detection.  We will be working with breast tissue data provided by the University of California Irvine (UCI) Machine learning course which can be found <a href="https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/breast-cancer-wisconsin.data"> here.</a>  The dataset contains a sampling of 699 patient cells for which we have the following features:</p>
 <ol>
 <li>Sample code number: id number </li>
 <li>Clump Thickness: 1 - 10 </li>
@@ -11813,6 +11834,8 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>I built three classes for this project that encapsulate all the methods and functionality that we use to analyze the data and develop classification models. Constructing these class was also nice because they can easily be altered for other projects which will save me development time later in the future.</p>
 <p>The cancer_cell_data class obtains the cancer cell data from the UCI website and cleans it. It stores the cleaned data as a Pandas dataframe (df) as a member variable of the class_cell_data object.  The cancer_cell_data class also has a few of the pandas dataframe methods overloaded for convenience.</p>
+<hr>
+<h2 id="Classes">Classes<a class="anchor-link" href="#Classes">&#182;</a></h2><hr>
 
 </div>
 </div>
@@ -12114,7 +12137,9 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Cleaning-the-data">Cleaning the data<a class="anchor-link" href="#Cleaning-the-data">&#182;</a></h2><p>Now we can get to the progess of data wrangling and cleaning. We first instantiate a cancer_cell_data object that obtains and drops the column containing the id number.</p>
+<hr>
+<h2 id="Cleaning">Cleaning<a class="anchor-link" href="#Cleaning">&#182;</a></h2><hr>
+<p>Now we can get to the progess of data wrangling and cleaning. We first instantiate a cancer_cell_data object that obtains and drops the column containing the id number.</p>
 
 </div>
 </div>
@@ -12640,7 +12665,9 @@ Name: nuclei, dtype: int64
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It seems now that all our rows and columns have values within the ranges described in the introduction and we are happy that our data is cleaned and in the correct format.  We can now move on to see what we can learn from the dataset through visualization.</p>
-<h2 id="Visualizing-the-data">Visualizing the data<a class="anchor-link" href="#Visualizing-the-data">&#182;</a></h2><p>Let's instantiate our visualization object:</p>
+<hr>
+<h2 id="Visualization">Visualization<a class="anchor-link" href="#Visualization">&#182;</a></h2><hr>
+<p>Let's instantiate our visualization object:</p>
 
 </div>
 </div>
@@ -28445,7 +28472,9 @@ EMJjSbIqhBBCCCE81v8DPTo44z3ZsSQAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Modeling">Modeling<a class="anchor-link" href="#Modeling">&#182;</a></h1><p>We now look into developing a model for a our data.  We first create a classifier object and then split our training data into training and test set.</p>
+<hr>
+<h2 id="Modeling">Modeling<a class="anchor-link" href="#Modeling">&#182;</a></h2><hr>
+<p>We now look into developing a model for a our data.  We first create a classifier object and then split our training data into training and test set.</p>
 
 </div>
 </div>
@@ -28469,7 +28498,7 @@ EMJjSbIqhBBCCCE81v8DPTo44z3ZsSQAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Logistic-Regression">Logistic Regression<a class="anchor-link" href="#Logistic-Regression">&#182;</a></h2><p>The first classifier model that we can look into is logistic regression. Logistic regression is a simple, but robust model. While only works for data which is linearly seperable, it provides us with highly interable results. The coefficents for each feature variable can be interpreted as to how "correlated" the feature is to the cell class.   We call the function "logistic_reg_model" which fits our model to the training data, prints the 10-fold cross-validation accuracy as well as the coefficents for the model:</p>
+<h3 id="Logistic-Regression">Logistic Regression<a class="anchor-link" href="#Logistic-Regression">&#182;</a></h3><p>The first classifier model that we can look into is logistic regression. Logistic regression is a simple, but robust model. While only works for data which is linearly seperable, it provides us with highly interable results. The coefficents for each feature variable can be interpreted as to how "correlated" the feature is to the cell class.   We call the function "logistic_reg_model" which fits our model to the training data, prints the 10-fold cross-validation accuracy as well as the coefficents for the model:</p>
 
 </div>
 </div>
@@ -29028,7 +29057,7 @@ B1BElWKnL3M0AAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Logistic-Regression-With-l1-Regularization">Logistic Regression With l1 Regularization<a class="anchor-link" href="#Logistic-Regression-With-l1-Regularization">&#182;</a></h2><p>Since the features are somewhat correlated we can look into using regularization to find which coefficients matter the most. We can do this with logistic regression.  Using l1 regularization performs feature selection on our model.  We perform 10-fold cross validation with a grid search for the optimal penalty parameter using logistic_reg_L1_penalty method.  We output the trainging accuracy and coefficents below:</p>
+<h3 id="Logistic-Regression-With-l1-Regularization">Logistic Regression With l1 Regularization<a class="anchor-link" href="#Logistic-Regression-With-l1-Regularization">&#182;</a></h3><p>Since the features are somewhat correlated we can look into using regularization to find which coefficients matter the most. We can do this with logistic regression.  Using l1 regularization performs feature selection on our model.  We perform 10-fold cross validation with a grid search for the optimal penalty parameter using logistic_reg_L1_penalty method.  We output the trainging accuracy and coefficents below:</p>
 
 </div>
 </div>
@@ -29594,7 +29623,9 @@ AElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2>
+<hr>
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><hr>
+
 </div>
 </div>
 </div>
